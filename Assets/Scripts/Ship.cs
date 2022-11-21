@@ -14,7 +14,6 @@ public class Ship : MonoBehaviour
     {
         bottomEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).y + shipMargin;
         topEdge = -1 * bottomEdge;
-       // Debug.Log(topEdge + " " + bottomEdge);
     }
 
     void Update()
@@ -26,6 +25,14 @@ public class Ship : MonoBehaviour
         else if (Input.GetKey(KeyCode.DownArrow) && transform.position.y >= bottomEdge)
         {
             transform.position += new Vector3(0, -1 * shipSpeed * Time.deltaTime);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Asteroid")
+        {
+            Debug.Log("Damaged ship!");
         }
     }
 }
