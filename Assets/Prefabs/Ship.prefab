@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6866805158500052308}
   m_Layer: 0
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,6 +74,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipMargin: 0.6
   shipSpeed: 5
+  blastDamage: 5
+  blastSpeed: 25
   blastPoints:
   - {fileID: 3005663803065021353}
   - {fileID: 2813833653199843545}

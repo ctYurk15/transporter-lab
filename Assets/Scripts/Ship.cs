@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ship : MonoBehaviour
+public class Ship : HP
 {
     public float shipMargin = 0.6f;
     public float shipSpeed = 0.5f;
@@ -45,11 +45,9 @@ public class Ship : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void Death()
     {
-        if (collision.gameObject.tag == "Asteroid")
-        {
-            Debug.Log("Damaged ship!");
-        }
+        Destroy(gameObject);
+        Time.timeScale = 0f;
     }
 }

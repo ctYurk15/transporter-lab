@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroid : MonoBehaviour
+public class Asteroid : HP
 {
     public GameObject[] textures;
     public float speed = 5;
-    public float hp = 10;
+    public float damage = 5;
 
     private float leftEdge;
 
@@ -29,16 +29,15 @@ public class Asteroid : MonoBehaviour
         }
     }
 
-    public void Damage(float damage_hp)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        hp -= damage_hp;
-        if(hp <= 0)
+        if (collision.gameObject.tag == "Ship")
         {
-            Death();
+            collision.gameObject.GetComponent<Ship>().Damage(damage);
         }
     }
 
-    private void Death()
+    protected override void Death()
     {
         Destroy(gameObject);
     }
