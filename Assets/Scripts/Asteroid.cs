@@ -5,8 +5,9 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     public GameObject[] textures;
-
     public float speed = 5;
+    public float hp = 10;
+
     private float leftEdge;
 
     private void Start()
@@ -26,5 +27,19 @@ public class Asteroid : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Damage(float damage_hp)
+    {
+        hp -= damage_hp;
+        if(hp <= 0)
+        {
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        Destroy(gameObject);
     }
 }
