@@ -62,6 +62,11 @@ public class GameManager : MonoBehaviour
         deathModal.SetActive(true);
     }
 
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
     private void clearAsteroids()
     {
         Asteroid[] asteroids = FindObjectsOfType<Asteroid>();
