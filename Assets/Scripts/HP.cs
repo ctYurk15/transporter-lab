@@ -9,10 +9,17 @@ public abstract class HP : MonoBehaviour
     public void Damage(float damage_hp)
     {
         health -= damage_hp;
+        UpdateHealth(health);
+
         if (health <= 0)
         {
             Death();
         }
+    }
+
+    protected virtual void UpdateHealth(float new_hp)
+    {
+
     }
 
     protected abstract void Death();
