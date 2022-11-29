@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     {
         CancelInvoke(nameof(endLevel));
         clearAsteroids();
+        clearBlasts();
 
         Time.timeScale = 0f;
         deathModal.SetActive(true);
@@ -73,6 +74,15 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < asteroids.Length; i++)
         {
             Destroy(asteroids[i].gameObject);
+        }
+    }
+
+    private void clearBlasts()
+    {
+        ShipBlast[] shipBlasts = FindObjectsOfType<ShipBlast>();
+        for (int i = 0; i < shipBlasts.Length; i++)
+        {
+            Destroy(shipBlasts[i].gameObject);
         }
     }
 }

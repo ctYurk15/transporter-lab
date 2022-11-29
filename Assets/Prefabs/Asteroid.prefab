@@ -77,6 +77,8 @@ MonoBehaviour:
   textures:
   - {fileID: 6373323056648108242}
   - {fileID: 6373323056075797698}
+  deathSound: {fileID: 3671049574210630106, guid: d8ea05d19c9164645861ec8f672ef771,
+    type: 3}
   speed: 5
   damage: 5
 --- !u!50 &-8001842042824873547

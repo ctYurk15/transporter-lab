@@ -5,6 +5,7 @@ using UnityEngine;
 public class Asteroid : HP
 {
     public GameObject[] textures;
+    public AudioSource deathSound;
     public float speed = 5;
     public float damage = 5;
 
@@ -40,6 +41,7 @@ public class Asteroid : HP
 
     protected override void Death()
     {
+        Instantiate(deathSound, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

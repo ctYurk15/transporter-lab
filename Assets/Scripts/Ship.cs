@@ -10,13 +10,15 @@ public class Ship : HP
     public float blastDamage = 5;
     public float blastSpeed = 25; 
     public float initialHealth = 10; 
-
-    public GameObject[] blastPoints;
+    
     public Skin[] skins;
     public int skin = 1;
 
     public GameObject shipBlast;
     public GameManager gameManager;
+
+    public AudioSource blastSound;
+    public AudioSource deathSound;
 
     public Text hpText;
 
@@ -55,12 +57,14 @@ public class Ship : HP
                 newShipBlast.GetComponent<ShipBlast>().damage = blastDamage;
                 newShipBlast.GetComponent<ShipBlast>().speed = blastSpeed;
             }
+            blastSound.Play();
         }
     }
 
     protected override void Death()
     {
-        gameObject.SetActive(false);
+        selected_skin.gameObject.SetActive(false);
+        deathSound.Play();
         gameManager.Death();
     }
 
@@ -77,6 +81,7 @@ public class Ship : HP
         transform.position = initialPosition;
 
         gameObject.SetActive(true);
+        selectSkin();
     }
 
     public void selectSkin()
