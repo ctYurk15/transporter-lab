@@ -34,6 +34,7 @@ public class Asteroid : HP
         if (collision.gameObject.tag == "Ship")
         {
             collision.gameObject.GetComponent<Ship>().Damage(damage);
+            Destroy(gameObject);
         }
     }
 

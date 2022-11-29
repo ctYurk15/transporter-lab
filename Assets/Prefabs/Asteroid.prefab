@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a5495fea79ada49bf26f4c848b05ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
+  health: 60
   textures:
   - {fileID: 6373323056648108242}
   - {fileID: 6373323056075797698}

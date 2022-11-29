@@ -2023,10 +2023,20 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1945385997}
+    - target: {fileID: 451990377737306504, guid: eaf79f5f2add3d844982724a971c965c,
+        type: 3}
+      propertyPath: skin
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 451990377737306614, guid: eaf79f5f2add3d844982724a971c965c,
         type: 3}
       propertyPath: m_Name
       value: Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 451990377737306614, guid: eaf79f5f2add3d844982724a971c965c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 451990377737306615, guid: eaf79f5f2add3d844982724a971c965c,
         type: 3}
@@ -2082,6 +2092,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022526555236341388, guid: eaf79f5f2add3d844982724a971c965c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaf79f5f2add3d844982724a971c965c, type: 3}

@@ -12,6 +12,9 @@ public class Ship : HP
     public float initialHealth = 10; 
 
     public GameObject[] blastPoints;
+    public Skin[] skins;
+    public int skin = 1;
+
     public GameObject shipBlast;
     public GameManager gameManager;
 
@@ -20,6 +23,7 @@ public class Ship : HP
     private float topEdge;
     private float bottomEdge;
     private Vector3 initialPosition;
+    private Skin selected_skin;
 
     void Start()
     {
@@ -27,6 +31,7 @@ public class Ship : HP
         topEdge = -1 * bottomEdge;
 
         initialPosition = transform.position;
+        selectSkin();
     }
 
     void Update()
@@ -44,7 +49,7 @@ public class Ship : HP
         //shoot
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            foreach(GameObject blastPoint in blastPoints)
+            foreach(GameObject blastPoint in selected_skin.blastPoints)
             {
                 GameObject newShipBlast = Instantiate(shipBlast, blastPoint.transform.position, Quaternion.identity);
                 newShipBlast.GetComponent<ShipBlast>().damage = blastDamage;
@@ -72,5 +77,16 @@ public class Ship : HP
         transform.position = initialPosition;
 
         gameObject.SetActive(true);
+    }
+
+    public void selectSkin()
+    {
+        selected_skin = skins[skin];
+        selected_skin.gameObject.SetActive(true);
+
+        health = selected_skin.hp;
+        initialHealth = selected_skin.hp;
+        shipSpeed = selected_skin.speed;
+        UpdateHealth(health);
     }
 }
