@@ -982,6 +982,9 @@ MonoBehaviour:
   blastPoints:
   - {fileID: 3005663803065021353}
   - {fileID: 2813833653199843545}
+  body: {fileID: 451990377924487687}
+  engines: {fileID: 451990379360905876}
+  guns: {fileID: 451990379514645121}
 --- !u!1 &4372547094244244782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,6 +1201,9 @@ MonoBehaviour:
   blastPoints:
   - {fileID: 8408867529728595604}
   - {fileID: 9082284375361197671}
+  body: {fileID: 2274962286873104890}
+  engines: {fileID: 2507111906003964357}
+  guns: {fileID: 4372547094244244782}
 --- !u!1 &8408867529728595604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,6 +1288,9 @@ MonoBehaviour:
   blastPoints:
   - {fileID: 466148650227809775}
   - {fileID: 415075116765566348}
+  body: {fileID: 323517737892109522}
+  engines: {fileID: 480547896774549776}
+  guns: {fileID: 6251091631685993107}
 --- !u!1 &8783570525705033199
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,17 +39,17 @@ public class Ship : HP
     void Update()
     {
         //move
-        if(Input.GetKey(KeyCode.UpArrow) && transform.position.y <= topEdge)
+        if(Input.GetKey(KeyCode.UpArrow) && transform.position.y <= topEdge && selected_skin.can_fly)
         {
             transform.position += new Vector3(0, shipSpeed * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.DownArrow) && transform.position.y >= bottomEdge)
+        else if (Input.GetKey(KeyCode.DownArrow) && transform.position.y >= bottomEdge && selected_skin.can_fly)
         {
             transform.position += new Vector3(0, -1 * shipSpeed * Time.deltaTime);
         }
 
         //shoot
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && selected_skin.can_shoot)
         {
             foreach(GameObject blastPoint in selected_skin.blastPoints)
             {
@@ -71,6 +71,7 @@ public class Ship : HP
     protected override void UpdateHealth(float new_hp)
     {
         hpText.text = "HP: " + new_hp;
+        selected_skin.updateLook(initialHealth, new_hp);
     }
 
     public void Restore()
@@ -89,6 +90,7 @@ public class Ship : HP
     {
         selected_skin = skins[skin];
         selected_skin.gameObject.SetActive(true);
+        selected_skin.reEnable();
 
         health = selected_skin.hp;
         initialHealth = selected_skin.hp;
