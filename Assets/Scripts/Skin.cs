@@ -21,12 +21,12 @@ public class Skin : MonoBehaviour
         int hp_percents = (int)((current_hp * 100) / max_hp);
         Debug.Log(hp_percents);
 
-        if(hp_percents <= 66 && hp_percents >= 33)
+        if(hp_percents <= 66 && hp_percents > 33)
         {
             can_shoot = false;
             guns.gameObject.SetActive(false);
         }
-        else if (hp_percents < 33 && hp_percents > 0)
+        else if (hp_percents <= 33 && hp_percents > 0)
         {
             can_fly = false;
             engines.gameObject.SetActive(false);
