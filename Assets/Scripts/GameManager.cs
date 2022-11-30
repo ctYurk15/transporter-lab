@@ -11,14 +11,16 @@ public class GameManager : MonoBehaviour
     public GameObject spawner;
     public GameObject deathModal;
     public GameObject winModal;
+    public GameObject menuModal;
 
     public Ship ship;
 
     private void Start()
     {
         //how much time it takes to spawn given amount of waves
-        float time = wavesCount * spawner.GetComponent<Spawner>().interval;
-        InvokeRepeating(nameof(endLevel), time, time);
+        /*float time = wavesCount * spawner.GetComponent<Spawner>().interval;
+        InvokeRepeating(nameof(endLevel), time, time);*/
+        Time.timeScale = 0f;
     }
 
     private void endLevel()
@@ -39,6 +41,12 @@ public class GameManager : MonoBehaviour
         winModal.SetActive(true);
     }
 
+    public void startLevelWithSkin(int skin_number)
+    {
+        ship.skin = skin_number;
+        startLevel();
+    }
+
     public void startLevel()
     {
         Time.timeScale = 1f;
@@ -46,6 +54,7 @@ public class GameManager : MonoBehaviour
 
         deathModal.SetActive(false);
         winModal.SetActive(false);
+        menuModal.SetActive(false); 
 
         //how much time it takes to spawn given amount of waves
         float time = wavesCount * spawner.GetComponent<Spawner>().interval;

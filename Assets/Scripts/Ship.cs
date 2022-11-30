@@ -81,6 +81,7 @@ public class Ship : HP
         transform.position = initialPosition;
 
         gameObject.SetActive(true);
+        disableSkins();
         selectSkin();
     }
 
@@ -92,6 +93,16 @@ public class Ship : HP
         health = selected_skin.hp;
         initialHealth = selected_skin.hp;
         shipSpeed = selected_skin.speed;
+        blastDamage = selected_skin.damage;
+
         UpdateHealth(health);
+    }
+
+    private void disableSkins()
+    {
+        foreach (Skin _skin in skins)
+        {
+            _skin.gameObject.SetActive(false);
+        }
     }
 }
