@@ -9,6 +9,7 @@ public abstract class HP : MonoBehaviour
     public void Damage(float damage_hp)
     {
         health -= damage_hp;
+        if (health < 0) health = 0;
         UpdateHealth(health);
 
         if (health <= 0)

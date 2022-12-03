@@ -29,6 +29,9 @@ public class Skin : MonoBehaviour
         else if (hp_percents <= 33 && hp_percents > 0)
         {
             can_fly = false;
+            can_shoot = false;
+
+            guns.gameObject.SetActive(false);
             engines.gameObject.SetActive(false);
         }
     }

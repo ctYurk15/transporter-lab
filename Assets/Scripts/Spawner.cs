@@ -5,10 +5,12 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject[] positions;
-    public GameObject asteroidPrefab;
-    public int spawnChance = 3;
+    public GameObject[] asteroidPrefabs;
+    public int[] levelsWaves;
 
+    public int spawnChance = 3;
     public float interval = 1;
+    public int level = 0;
 
 
     private void OnEnable()
@@ -27,7 +29,7 @@ public class Spawner : MonoBehaviour
         {
             if(Random.Range(0, spawnChance) == 0)
             {
-                GameObject asteroid = Instantiate(asteroidPrefab, positions[i].transform.position, Quaternion.identity);
+                GameObject asteroid = Instantiate(asteroidPrefabs[level], positions[i].transform.position, Quaternion.identity);
             }
         }
     }
