@@ -27,6 +27,8 @@ public class Ship : HP
     private Vector3 initialPosition;
     private Skin selected_skin;
 
+    private int collected_crystals = 0;
+
     void Start()
     {
         bottomEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).y + shipMargin;
@@ -76,6 +78,7 @@ public class Ship : HP
 
     public void Restore()
     {
+        collected_crystals = 0;
         health = initialHealth;
         UpdateHealth(health);
 
@@ -105,6 +108,18 @@ public class Ship : HP
         foreach (Skin _skin in skins)
         {
             _skin.gameObject.SetActive(false);
+        }
+    }
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Crystal")
+        {
+            collected_crystals++;
+            gameManager.checkCrystals(collected_crystals);
+            Destroy(collision.gameObject);
         }
     }
 }

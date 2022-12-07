@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5718345368871802377}
   - component: {fileID: -8001842042824873547}
   m_Layer: 0
-  m_Name: Asteroid
+  m_Name: Asteroid1
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
   deathSound: {fileID: 3671049574210630106, guid: d8ea05d19c9164645861ec8f672ef771,
     type: 3}
   speed: 5
-  damage: 5
+  damage: 2
 --- !u!50 &-8001842042824873547
 Rigidbody2D:
   serializedVersion: 4

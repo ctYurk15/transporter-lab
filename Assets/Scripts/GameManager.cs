@@ -19,9 +19,12 @@ public class GameManager : MonoBehaviour
 
     public Text skinText;
     public Text levelText;
+    public Text levelTypeText;
 
     private int selected_skin = 0;
     private int selected_level = 0;
+    private bool shipping_level;
+
     private int wavesCount = 10;
 
     private void Start()
@@ -47,22 +50,43 @@ public class GameManager : MonoBehaviour
         winModal.SetActive(true);
     }
 
+    public void checkCrystals(int crystals)
+    {
+        if(!shipping_level && crystals >= spawner.levelsCrystals[selected_level])
+        {
+            endLevel();
+        }
+    }
+
     public void selectSkin(int skin_number)
     {
         selected_skin = skin_number;
         skinText.text = "Skin: " + (selected_skin + 1);
     }
 
-    public void selectLevel(int level_number)
+    public void selectShippingLevel(int level_number)
     {
+        shipping_level = true;
         selected_level = level_number;
+
         levelText.text = "Level: " + (selected_level + 1);
+        levelTypeText.text = "Type: shipping";
+    }
+
+    public void selectCollectingLevel(int level_number)
+    {
+        shipping_level = false;
+        selected_level = level_number;
+
+        levelText.text = "Level: " + (selected_level + 1);
+        levelTypeText.text = "Type: collecting";
     }
 
     public void startLevel()
     {
         ship.skin = selected_skin;
         spawner.level = selected_level;
+        spawner.isDelivery = shipping_level;
         sky.setMaterial(selected_level);
 
         wavesCount = spawner.levelsWaves[selected_level];
@@ -72,12 +96,17 @@ public class GameManager : MonoBehaviour
 
         deathModal.SetActive(false);
         winModal.SetActive(false);
-        menuModal.SetActive(false); 
+        menuModal.SetActive(false);
+
+
+        spawner.gameObject.SetActive(true);
 
         //how much time it takes to spawn given amount of waves
-        float time = wavesCount * spawner.interval;
-        InvokeRepeating(nameof(endLevel), time, time);
-        spawner.gameObject.SetActive(true);
+        if (shipping_level)
+        {
+            float time = wavesCount * spawner.interval;
+            InvokeRepeating(nameof(endLevel), time, time);
+        }
     }
 
     public void Death()
@@ -118,5 +147,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(shipBlasts[i].gameObject);
         }
+    }
+
+    public bool isShipping()
+    {
+        return shipping_level;
     }
 }

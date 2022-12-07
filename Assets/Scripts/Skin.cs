@@ -19,7 +19,6 @@ public class Skin : MonoBehaviour
     public void updateLook(float max_hp, float current_hp)
     {
         int hp_percents = (int)((current_hp * 100) / max_hp);
-        Debug.Log(hp_percents);
 
         if(hp_percents <= 66 && hp_percents > 33)
         {
