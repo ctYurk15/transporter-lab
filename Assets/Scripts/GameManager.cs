@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public Text skinText;
     public Text levelText;
     public Text levelTypeText;
+    public Text crystalsText;
 
     private int selected_skin = 0;
     private int selected_level = 0;
@@ -52,7 +53,9 @@ public class GameManager : MonoBehaviour
 
     public void checkCrystals(int crystals)
     {
-        if(!shipping_level && crystals >= spawner.levelsCrystals[selected_level])
+        crystalsText.text = "Crystals left: " + (spawner.levelsCrystals[selected_level] - crystals);
+
+        if (!shipping_level && crystals >= spawner.levelsCrystals[selected_level])
         {
             endLevel();
         }
@@ -88,6 +91,9 @@ public class GameManager : MonoBehaviour
         spawner.level = selected_level;
         spawner.isDelivery = shipping_level;
         sky.setMaterial(selected_level);
+
+        crystalsText.gameObject.SetActive(!shipping_level);
+        crystalsText.text = "Crystals left: " + spawner.levelsCrystals[selected_level];
 
         wavesCount = spawner.levelsWaves[selected_level];
 
