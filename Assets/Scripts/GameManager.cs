@@ -128,6 +128,9 @@ public class GameManager : MonoBehaviour
         clearAsteroids();
         clearBlasts();
 
+        hpText.gameObject.SetActive(false);
+        crystalsText.gameObject.SetActive(false);
+
         Time.timeScale = 0f;
         deathModal.SetActive(true);
     }
