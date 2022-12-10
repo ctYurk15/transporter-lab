@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public GameObject winModal;
     public GameObject menuModal;
 
+    //public GameObject garageButton;
+
     public Ship ship;
 
     public Text hpText;
@@ -145,6 +147,11 @@ public class GameManager : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public void ToggleModal(GameObject modal)
+    {
+        modal.SetActive(!modal.activeSelf);
     }
 
     private void clearAsteroids()
