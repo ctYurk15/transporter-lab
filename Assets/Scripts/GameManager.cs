@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int winDelay = 5;
     public Spawner spawner;
     public Sky sky;
+    public ProgressManager progressManager;
 
     public GameObject deathModal;
     public GameObject winModal;
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     public Ship ship;
 
+    public Text hpText;
     public Text skinText;
     public Text levelText;
     public Text levelTypeText;
@@ -24,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private int selected_skin = 0;
     private int selected_level = 0;
-    private bool shipping_level;
+    private bool shipping_level = true;
 
     private int wavesCount = 10;
 
@@ -48,12 +50,17 @@ public class GameManager : MonoBehaviour
         clearAsteroids();
         Time.timeScale = 0f;
 
+        hpText.gameObject.SetActive(false);
+        crystalsText.gameObject.SetActive(false);
+
         winModal.SetActive(true);
+        progressManager.levelCompleted(selected_level);
     }
 
     public void checkCrystals(int crystals)
     {
-        crystalsText.text = "Crystals left: " + (spawner.levelsCrystals[selected_level] - crystals);
+        int crystals_left = spawner.levelsCrystals[selected_level] - crystals;
+        crystalsText.text = "Crystals left: " + (crystals_left > 0 ? crystals_left.ToString() : "collected all");
 
         if (!shipping_level && crystals >= spawner.levelsCrystals[selected_level])
         {
@@ -104,8 +111,8 @@ public class GameManager : MonoBehaviour
         winModal.SetActive(false);
         menuModal.SetActive(false);
 
-
         spawner.gameObject.SetActive(true);
+        hpText.gameObject.SetActive(true);
 
         //how much time it takes to spawn given amount of waves
         if (shipping_level)
