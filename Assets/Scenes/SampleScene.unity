@@ -3931,7 +3931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsText: {fileID: 858467982}
-  levelsCoins: 05000000080000000b000000
+  levelsCoins: 030000000500000008000000
   shipPrices: 000000000a00000014000000
   shipping_levelSelectButtons:
   - {fileID: 1743837077}
@@ -5017,7 +5017,7 @@ MonoBehaviour:
   - {fileID: 3836789921963230618, guid: b419dda741de5a74e8cd56f339e5c862, type: 3}
   crystal: {fileID: 6435155500758302603, guid: 85f5c30dd91444349a5ab9e0e055af16, type: 3}
   levelsWaves: 280000004100000055000000
-  levelsCrystals: 020000000300000004000000
+  levelsCrystals: 05000000080000000a000000
   spawnChance: 2
   interval: 0.5
   level: 0
@@ -5971,6 +5971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winDelay: 5
+  winDelay_afteranim: 1.25
   spawner: {fileID: 1692085060}
   sky: {fileID: 152703852}
   progressManager: {fileID: 1122941764}

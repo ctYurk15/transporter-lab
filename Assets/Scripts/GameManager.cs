@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public int winDelay = 5;
+    public float winDelay_afteranim = 1.5f;
     public Spawner spawner;
     public Sky sky;
     public ProgressManager progressManager;
@@ -45,11 +46,19 @@ public class GameManager : MonoBehaviour
         spawner.gameObject.SetActive(false);
         CancelInvoke(nameof(endLevel));
 
-        InvokeRepeating(nameof(winLevel), winDelay, winDelay);
+        InvokeRepeating(nameof(winAnimate), winDelay, winDelay);
+    }
+
+    private void winAnimate()
+    {
+        ship.levelCompleted();
+        InvokeRepeating(nameof(winLevel), winDelay_afteranim, winDelay_afteranim);
     }
 
     private void winLevel()
     {
+        ship.GetComponent<Animator>().Play("IDLE");
+        ship.disableSkins();
         CancelInvoke(nameof(winLevel));
 
         clearAsteroids();

@@ -8,9 +8,9 @@ public class Ship : HP
     public float shipMargin = 0.6f;
     public float shipSpeed = 0.5f;
     public float blastDamage = 5;
-    public float blastSpeed = 25; 
-    public float initialHealth = 10; 
-    
+    public float blastSpeed = 25;
+    public float initialHealth = 10;
+
     public Skin[] skins;
     public int skin = 1;
 
@@ -41,7 +41,7 @@ public class Ship : HP
     void Update()
     {
         //move
-        if(Input.GetKey(KeyCode.UpArrow) && transform.position.y <= topEdge && selected_skin.can_fly)
+        if (Input.GetKey(KeyCode.UpArrow) && transform.position.y <= topEdge && selected_skin.can_fly)
         {
             transform.position += new Vector3(0, shipSpeed * Time.deltaTime);
         }
@@ -51,9 +51,9 @@ public class Ship : HP
         }
 
         //shoot
-        if(Input.GetKeyDown(KeyCode.Space) && selected_skin.can_shoot)
+        if (Input.GetKeyDown(KeyCode.Space) && selected_skin.can_shoot)
         {
-            foreach(GameObject blastPoint in selected_skin.blastPoints)
+            foreach (GameObject blastPoint in selected_skin.blastPoints)
             {
                 GameObject newShipBlast = Instantiate(shipBlast, blastPoint.transform.position, Quaternion.identity);
                 newShipBlast.GetComponent<ShipBlast>().damage = blastDamage;
@@ -103,12 +103,17 @@ public class Ship : HP
         UpdateHealth(health);
     }
 
-    private void disableSkins()
+    public void disableSkins()
     {
         foreach (Skin _skin in skins)
         {
             _skin.gameObject.SetActive(false);
         }
+    }
+
+    public void levelCompleted()
+    {
+        GetComponent<Animator>().Play("hyperspace");
     }
 
 
