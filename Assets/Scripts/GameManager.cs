@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public GameObject winModal;
     public GameObject menuModal;
 
+    public GameObject garageModal;
+    public GameObject levelsModal;
+
     //public GameObject garageButton;
 
     public Ship ship;
@@ -56,7 +59,7 @@ public class GameManager : MonoBehaviour
         crystalsText.gameObject.SetActive(false);
 
         winModal.SetActive(true);
-        progressManager.levelCompleted(selected_level);
+        progressManager.levelCompleted(selected_level, shipping_level);
     }
 
     public void checkCrystals(int crystals)
@@ -142,6 +145,9 @@ public class GameManager : MonoBehaviour
         deathModal.SetActive(false);
         winModal.SetActive(false);
         menuModal.SetActive(true);
+
+        garageModal.SetActive(false);
+        levelsModal.SetActive(false);
     }
 
     public void Exit()

@@ -3931,8 +3931,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsText: {fileID: 858467982}
-  levelsCoins: 020000000300000004000000
+  levelsCoins: 05000000080000000b000000
   shipPrices: 000000000a00000014000000
+  shipping_levelSelectButtons:
+  - {fileID: 1743837077}
+  - {fileID: 259972257}
+  - {fileID: 1855205819}
+  collecting_levelSelectButtons:
+  - {fileID: 478145933}
+  - {fileID: 1232292887}
+  - {fileID: 1947081686}
   shipSelectButtons:
   - {fileID: 190750244}
   - {fileID: 219722900}
@@ -5969,6 +5977,8 @@ MonoBehaviour:
   deathModal: {fileID: 684120892}
   winModal: {fileID: 362192107}
   menuModal: {fileID: 914736884}
+  garageModal: {fileID: 765591581}
+  levelsModal: {fileID: 1221871591}
   ship: {fileID: 254951412}
   hpText: {fileID: 913865626}
   skinText: {fileID: 16526792}
